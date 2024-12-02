@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="./bootstrap.css">
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
   <section>
     <div class="">
@@ -15,27 +17,33 @@
 
         <div class="col secondDiv">
           <div class="container col-7">
-            <div><h4 class="text black text-center pt-5">Create your account</h4></div>
             <form action="">
+              <div>
+                <h3 class="text black text-center pt-5">Create your account</h4>
+              </div>
+              <div>
+                <h6>Have an account? <a class="text-decoration-none fw-bold" href="login.html">Log in now</a></h5>
+              </div>
               <div class="pt-1">
                 <label class="fw-medium" for="">Email*</label>
-              <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="email" placeholder="Enter your email">
+                <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="email"
+                  placeholder="Enter your email">
               </div>
               <div class="mt-3">
                 <label class="fw-medium" for="">First Name*</label>
-              <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="email">
+                <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="email">
               </div>
               <div class="mt-3">
                 <label class="fw-medium" for="">Last Name*</label>
-              <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="email">
+                <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="email">
               </div>
               <div class="mt-3">
                 <label class="fw-medium" for="">Password*</label>
-              <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="password">
+                <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="password">
               </div>
               <div class="mt-3">
                 <label class="fw-medium" for="">Confirm Password*</label>
-              <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="password">
+                <input class="form-control shadow-none border-2 py-2 px-2 mt-1" type="password">
               </div>
               <div class="mt-3">
                 <button class="btn btn-primary rounded-3 w-100 fw-medium">Create account</button>
@@ -46,10 +54,14 @@
                 <hr class="w-50">
               </div>
               <div class="mt-2 mb-1">
-                <button class="w-100 py-3 rounded-3 bg-white border border-dark-subtle text-secondary fw-medium d-flex justify-content-center align-items-center gap-3"> <img class="" src="./image/devicon--google.svg" width="25" alt=""> Google</button>
+                <button id="signgoogle"
+                  class="w-100 py-3 rounded-3 bg-white border border-dark-subtle text-secondary fw-medium d-flex justify-content-center align-items-center gap-3">
+                  <img class="" src="image/devicon--google.svg" width="25" alt=""> Google</button>
               </div>
               <div class="mt-3 mb-1">
-                <button class="w-100 py-3 rounded-3 bg-white border border-dark-subtle text-secondary fw-medium d-flex justify-content-center align-items-center gap-3"> <img class="" src="./image/fa6-brands--github.svg" width="26" alt=""> GitHub</button>
+                <button
+                  class="w-100 py-3 rounded-3 bg-white border border-dark-subtle text-secondary fw-medium d-flex justify-content-center align-items-center gap-3">
+                  <img class="" src="image/fa6-brands--github.svg" width="26" alt=""> GitHub</button>
               </div>
             </form>
           </div>
@@ -57,5 +69,44 @@
       </div>
     </div>
   </section>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { GoogleAuthProvider, signInWithPopup, getAuth } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAqWrunqol1giALjyZ4M6SCNWe02UW-vRo",
+        authDomain: "project-b4845.firebaseapp.com",
+        projectId: "project-b4845",
+        storageBucket: "project-b4845.firebasestorage.app",
+        messagingSenderId: "494221633729",
+        appId: "1:494221633729:web:2f83f54a3b53e497040c40"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    // const login = document.getElementById('googlesign')
+    
+    
+
+    signgoogle.addEventListener('click', () => {
+        // alert('hi')
+        signInWithPopup(auth, provider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log(user);
+                }).catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error(errorCode);
+                    console.error(errorMessage)
+                });
+    })
+</script>
 </body>
+
 </html>

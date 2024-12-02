@@ -11,7 +11,7 @@ section{
     overflow-x: hidden;
 }
 .backgroundpic{
-    background-image: url(/public/image/college-75535_1280.jpg);
+    background-image: url('image/college.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
